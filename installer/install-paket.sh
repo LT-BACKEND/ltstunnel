@@ -231,6 +231,15 @@ mkdir /tmp/trojan
 mkdir /tmp/noobzvpns
 mkdir /tmp/shadowsocks
 mkdir /tmp/ssh
+
+# mkdir data .db
+mkdir /etc/lunatic/noobzvpns/.noobzvpns.db
+mkdir /etc/lunatic/shadowsocks/.shadowsocks.db
+mkdir /etc/lunatic/vless/.vless.db
+mkdir /etc/lunatic/vmess/.vmess.db
+mkdir /etc/lunatic/trojan/.trojan.db
+mkdir /etc/lunatic/sstp/.sstp.db
+mkdir /etc/lunatic/l2tp/.l2tp.db
 # Mkdir /etc/
 mkdir /etc/lunatic/noobzvpns
 mkdir /etc/lunatic/shadowsocks
@@ -259,15 +268,16 @@ echo "& plughin Account" >>/etc/lunatic/sstp/.sstp.db
 echo "& plughin Account" >>/etc/lunatic/l2tp/.l2tp.db
 echo "& plughin Account" >>/etc/lunatic/bot/.bot.db
 # Folder Dir Limit ip Account
-mkdir -p /etc/cybervpn/limit/vmess/ip/
-mkdir -p /etc/cybervpn/limit/vless/ip/
-mkdir -p /etc/cybervpn/limit/trojan/ip/
-mkdir -p /etc/cybervpn/limit/ssh/ip/
-mkdir -p /etc/cybervpn/limit/noobs/ip/
-mkdir -p /etc/cybervpn/limit/shadowsocks/ip/
-mkdir -p /etc/cybervpn/limit/sstp/ip/
-mkdir -p /etc/cybervpn/limit/l2tp/ip/
+mkdir -p /etc/lunatic/limit/vmess/ip/
+mkdir -p /etc/lunatic/limit/vless/ip/
+mkdir -p /etc/lunatic/limit/trojan/ip/
+mkdir -p /etc/lunatic/limit/ssh/ip/
+mkdir -p /etc/lunatic/limit/noobs/ip/
+mkdir -p /etc/lunatic/limit/shadowsocks/ip/
+mkdir -p /etc/lunatic/limit/sstp/ip/
+mkdir -p /etc/lunatic/limit/l2tp/ip/
 
+#folder="/etc/lunatic/limit/vmess/ip/"
 # Detect account Noobzvpns
 mkdir /etc/noobzvpns
 touch /etc/noobzvpns/.noobzvpns.db
@@ -330,3 +340,4 @@ touch /root/limit/rulesxray.txt
 
 #chmod +x /usr/bin/update
 rm -rf set-br.sh
+cd

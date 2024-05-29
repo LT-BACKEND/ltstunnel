@@ -203,7 +203,7 @@ echo -e "$green      Install slowdns               $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 
-wget -q -O slowdns.sh https://raw.githubusercontent.com/LT-BACKEND/ltstunnel/main/installer/install-slowdns.sh && chmod +x install-slowdns.sh && ./install-slowdns.sh
+wget https://raw.githubusercontent.com/LT-BACKEND/ltstunnel/main/installer/install-slowdns.sh && chmod +x install-slowdns.sh && ./install-slowdns.sh
 
 #cronjob
 #echo "30 * * * * root removelog" >> /etc/crontab

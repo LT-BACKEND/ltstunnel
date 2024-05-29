@@ -36,7 +36,7 @@ echo -e "$COLOR1│${NC}  • You Dont have any existing clients!"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo ""
 read -n 1 -s -r -p "   Press any key to back on menu"
-menu-vmess
+m-vme
 fi
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
@@ -49,16 +49,16 @@ data=( `cat /etc/xray/config.json | grep '###' | cut -d ' ' -f 2 | sort | uniq`)
 for akun in "${data[@]}"
 do
 exp=$(grep -wE "^### $akun" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-iplimit=$(cat /etc/cybervpn/limit/vmess/ip/${akun})
-byte=$(cat /etc/vmess/${akun})
+iplimit=$(cat /etc/lunatic/limit/vmess/ip/${akun})
+byte=$(cat /etc/lunatic/vmess/${akun})
 lim=$(con ${byte})
-wey=$(cat /etc/limit/vmess/${akun})
+wey=$(cat /etc/lunatic/limit/vmess/${akun})
 gb=$(con ${wey})
 printf "%-10s %-10s %-10s %-20s\n"  " ${akun}"   " ${gb}" "${lim}" "$iplimit     $exp"
 done
 echo -e ""
 read -n 1 -s -r -p "  • [NOTE] Press any key to back on menu"
-menu-vmess
+m-vme
 }
 function delvmess(){
 clear
@@ -72,7 +72,7 @@ echo -e "$COLOR1│${NC}  • You Dont have any existing clients!"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo ""
 read -n 1 -s -r -p "   Press any key to back on menu"
-menu-vmess
+m-vme
 fi
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
@@ -85,7 +85,7 @@ echo -e "$COLOR1└────────────────────�
 echo -e "$COLOR1───────────────────────────────────────────────────${NC}"
 read -rp "   Input Username : " user
 if [ -z $user ]; then
-menu-vmess
+m-vme
 else
 exp=$(grep -wE "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
 sed -i "/^### $user $exp/,/^},{/d" /etc/xray/config.json
@@ -103,7 +103,7 @@ echo -e "$COLOR1│${NC}   • Expired On  : $exp"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo ""
 read -n 1 -s -r -p "   Press any key to back on menu"
-menu-vmess
+m-vme
 fi
 }
 function unlock(){
@@ -114,7 +114,7 @@ echo -e "$COLOR1│${NC} ${COLBG1}             • UNLOCK XRAY USER •         
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 read -rp "   Input Username for unlock: " user
 if [ -z $user ]; then
-menu-vmess
+m-vme
 else
 uuid=$(cat /etc/lunatic/vmess/.vmess.db | grep $user | awk '{print $4}')
 exp=$(cat /etc/lunatic/vmess/.vmess.db | grep $user | awk '{print $3}')
@@ -171,7 +171,7 @@ done
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 read -rp "   Input Username for recovery: " user
 if [ -z $user ]; then
-menu-vmess
+m-vme
 else
 echo "reset Quota usage"
 rm /etc/limit/vmess/$user
@@ -220,7 +220,7 @@ echo -e "$COLOR1│${NC}  • You have no existing clients!"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo ""
 read -n 1 -s -r -p "   Press any key to back on menu"
-menu-vmess
+m-vme
 fi
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
@@ -234,18 +234,18 @@ echo -e "$COLOR1└────────────────────�
 echo -e ""
 read -rp "Input Username : " user
 if [ -z $user ]; then
-menu-vmess
+m-vme
 else
 read -p "Expired (days): " masaaktif
-rm -f /etc/cybervpn/limit/vmess/ip/${user}
+rm -f /etc/lunatic/limit/vmess/ip/${user}
 rm -f /etc/vmess/$user
 read -p "Limit User (GB): " Quota
 read -p "Limit User (IP): " iplimit
 exp=$(grep -wE "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-mkdir -p /etc/cybervpn/limit/vmess/ip
-echo $iplimit > /etc/cybervpn/limit/vmess/ip/${user}
-if [ ! -e /etc/vmess/ ]; then
-mkdir -p /etc/vmess/
+mkdir -p /etc/lunatic/limit/vmess/ip
+echo $iplimit > /etc/lunatic/limit/vmess/ip/${user}
+if [ ! -e /etc/lunatic/vmess/ ]; then
+mkdir -p /etc/lunatic/vmess/
 fi
 if [ -z ${Quota} ]; then
 Quota="0"
@@ -253,7 +253,7 @@ fi
 c=$(echo "${Quota}" | sed 's/[^0-9]*//g')
 d=$((${c} * 1024 * 1024 * 1024))
 if [[ ${c} != "0" ]]; then
-echo "${d}" >/etc/vmess/${user}
+echo "${d}" >/etc/lunatic/vmess/${user}
 fi
 now=$(date +%Y-%m-%d)
 d1=$(date -d "$exp" +%s)
@@ -278,7 +278,7 @@ echo -e "$COLOR1│${NC}   Expired On  : $exp4"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e ""
 read -n 1 -s -r -p "   Press any key to back on menu"
-menu-vmess
+m-vme
 fi
 }
 function con() {
@@ -297,6 +297,7 @@ function cekvmess(){
 clear
 echo -n > /tmp/other.txt
 data=( `cat /etc/xray/config.json | grep '###' | cut -d ' ' -f 2 | sort | uniq`);
+clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}            • VMESS USER ONLINE •              ${NC} $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
@@ -326,11 +327,11 @@ jum=$(cat /tmp/ipvmess.txt)
 if [[ -z "$jum" ]]; then
 echo > /dev/null
 else
-iplimit=$(cat /etc/cybervpn/limit/vmess/ip/${akun})
+iplimit=$(cat /etc/lunatic/limit/vmess/ip/${akun})
 jum2=$(cat /tmp/ipvmess.txt | wc -l)
 byte=$(cat /etc/vmess/${akun})
 lim=$(con ${byte})
-wey=$(cat /etc/limit/vmess/${akun})
+wey=$(cat /etc/lunatic/limit/vmess/${akun})
 gb=$(con ${wey})
 lastlogin=$(cat /var/log/xray/access.log | grep -w "$akun" | tail -n 500 | cut -d " " -f 2 | tail -1)
 printf "  %-13s %-7s %-8s %2s\n"  " ${akun}    ${gb}    ${lim}      $iplimit       $jum2    $lastlogin"
@@ -342,12 +343,12 @@ echo ""
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo ""
 read -n 1 -s -r -p "   Press any key to back on menu"
-menu-vmess
+m-vme
 }
 function addvmess(){
-clear
 source /var/lib/ssnvpn-pro/ipvps.conf
 domain=$(cat /etc/xray/domain)
+clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}            • CREATE VMESS USER •              ${NC} $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
@@ -358,13 +359,13 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 read -rp " Input Username : "  user
 read -rp " input limit IP :"  iplimit
 read -rp " input limit kuota :"  Quota
-folder="/etc/kyt/limit/vmess/ip/"
+folder="/etc/lunatic/limit/vmess/ip/"
 if [ ! -d "$folder" ]; then
 mkdir -p "$folder"
 else
 echo ""
 fi
-echo $iplimit > /etc/cybervpn/limit/vmess/ip/${user}
+echo $iplimit > /etc/lunatic/limit/vmess/ip/${user}
 if [ -z $user ]; then
 echo -e "$COLOR1│${NC} [Error] Username cannot be empty "
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
@@ -446,8 +447,8 @@ vmesslink2="vmess://$(echo $ask | base64 -w 0)"
 vmesslink3="vmess://$(echo $grpc | base64 -w 0)"
 systemctl restart xray > /dev/null 2>&1
 service cron restart > /dev/null 2>&1
-if [ ! -e /etc/vmess ]; then
-mkdir -p /etc/vmess
+if [ ! -e /etc/lunatic/vmess ]; then
+mkdir -p /etc/lunatic/vmess
 fi
 if [ -z ${iplimit} ]; then
 iplimit="0"
@@ -458,7 +459,7 @@ fi
 c=$(echo "${Quota}" | sed 's/[^0-9]*//g')
 d=$((${c} * 1024 * 1024 * 1024))
 if [[ ${c} != "0" ]]; then
-echo "${d}" >/etc/vmess/${user}
+echo "${d}" >/etc/lunatic/vmess/${user}
 fi
 DATADB=$(cat /etc/lunatic/vmess/.vmess.db | grep "^###" | grep -w "${user}" | awk '{print $2}')
 if [[ "${DATADB}" != '' ]]; then
@@ -569,7 +570,7 @@ ${vmesslink3}
 --------------------------------------------
 EOF
 read -n 1 -s -r -p "   Press any key to back on menu"
-menu-vmess
+m-vme
 }
 function cek(){
 clear
@@ -585,7 +586,7 @@ echo -e "$COLOR1└────────────────────�
 echo -e "$COLOR1───────────────────────────────────────────────────${NC}"
 read -rp "   Input Username : " user
 if [ -z $user ]; then
-menu-vmess
+m-vme
 else
 cat /tmp/vmess/$user.txt
 fi
@@ -827,11 +828,11 @@ if [ -z $user ]; then
 echo -e "Input Username Dengan Benar ! "
 sleep 2 ; m-vme
 else
-rm -f /etc/vmess/$user
+rm -f /etc/lunatic/vmess/$user
 read -p "Limit User (GB): " Quota
 
 if [ ! -e /etc/vmess/ ]; then
-  mkdir -p /etc/vmess/
+  mkdir -p /etc/lunatic/vmess/
 fi
 
 if [ -z ${Quota} ]; then
@@ -842,7 +843,7 @@ c=$(echo "${Quota}" | sed 's/[^0-9]*//g')
 d=$((${c} * 1024 * 1024 * 1024))
 
 if [[ ${c} != "0" ]]; then
-  echo "${d}" >/etc/vmess/${user}
+  echo "${d}" >/etc/lunatic/vmess/${user}
 fi
 systemctl restart xray > /dev/null 2>&1
 systemctl restart crons > /dev/null 2>&1
@@ -855,7 +856,7 @@ echo -e "${y}━━━━━━━━━━━━━━━━━━━━━━�
 echo -e "${g}Edit Quota Account Vmess Successfully ${NC}"
 echo -e "${y}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo ""
-echo " Username    : $user"
+echo " Username      : $user"
 echo " Jumlah Quota  : $Quota"
 echo ""
 echo -e "${y}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
@@ -905,10 +906,10 @@ echo -e "${y}━━━━━━━━━━━━━━━━━━━━━━�
 if [ -z $user ]; then
 m-vme
 else
-rm -f /etc/cybervpn/limit/vmess/ip/${user}
+rm -f /etc/lunatic/limit/vmess/ip/${user}
 read -p "Limit User (IP): " iplim
-mkdir -p /etc/cybervpn/limit/vmess/ip
-echo ${iplim} >> /etc/cybervpn/limit/vmess/ip/${user}
+mkdir -p /etc/lunatic/limit/vmess/ip
+echo ${iplim} >> /etc/lunatic/limit/vmess/ip/${user}
 systemctl restart xray > /dev/null 2>&1
 systemctl restart crons > /dev/null 2>&1
 systemctl restart vmip > /dev/null 2>&1

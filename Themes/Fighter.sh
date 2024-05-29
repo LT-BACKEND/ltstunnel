@@ -223,12 +223,12 @@ case $opt in
 11) clear ; wbm ;;
 12) clear ; genssl ;;
 13) clear ; cftn ;;
-14) clear ; upsc ;;
+14) clear ; m-upd ;;
 15) clear ; running ;;
 16) clear ; restart ;;
 17) clear ; ins-udp ;;
 18) clear ; bw ;;
-19) clear ; menu-theme ;;
+19) clear ; m-tme;;
 20) clear ; about ;;
 100) clear ; $up2u ;;
 00 | 0) clear ; menu ;;
@@ -269,13 +269,13 @@ echo -e "           \e[0;35━━━\e[0m\e[0;32m━━━\e[0m\e[0;37m━━━
 echo -e ""
 read -p "      Select From Options [ 1 - 8 ] : " opt
 case $opt in
-1) clear ; menu-ssh ;;
-2) clear ; menu-vmess ;;
-3) clear ; menu-vless ;;
-4) clear ; menu-trojan ;; 
-5) clear ; menu-noobzvpns ;;
-6) clear ; menu-ss ;;
-7) clear ; menu-ipsec ;;
+1) clear ; m-ssh ;;
+2) clear ; m-vme ;;
+3) clear ; m-vle ;;
+4) clear ; m-tro ;; 
+5) clear ; m-nob ;;
+6) clear ; m-ssr ;;
+7) clear ; m-ipc ;;
 8) clear ; Others_Managers ;;
 *) exit ;;
 esac

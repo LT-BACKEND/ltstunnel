@@ -1,10 +1,4 @@
-# // Exporting Language to UTF-8
-
-# status
-#rm -rf /root/status
-#wget -q -O /root/status "https://raw.githubusercontent.com/LT-BACKEND/stunnelvpn/momok/statushariini"
-
-
+#!/bin/bash
 clear
 echo -e "\e[33;1m┌───────────────────────────────────────────────┐\e[0m"
 echo -e "\e[33;1m│\e[44;97;1m              • PROTOCOL MANAGER •             \e[0m\e[33;1m│"             
@@ -17,8 +11,8 @@ echo -e "\e[37;1m[05]• MENU SHADOWSOCKS"
 echo -e "\e[37;1m[06]• MENU TROJAN"
 echo -e "\e[37;1m[07]• MENU NOOBZVPNS \e[0m"
 echo -e "\e[37;1m[08]• MENU PPTP & L2TP"
-echo -e "\e[37;1m[09]• MENU TRIALL"
-echo -e "\e[37;1m[10]• MENU BACKUP VPS"
+echo -e "\e[37;1m[09]• MENU BACKUP VPS"
+echo -e "\e[37;1m[10]• MENU THEME (ganti tampilan Menu)"
 echo -e "\e[33;1m┌───────────────────────────────────────────────┐\e[0m"
 echo -e "\e[33;1m│\e[44;97;1m              • BOT TELEGRAM FTR •             \e[0m\e[33;1m│"             
 echo -e "\e[33;1m└───────────────────────────────────────────────┘\e[0m"
@@ -52,8 +46,8 @@ case $opt in
 06 | 6) clear ; m-tro ;;
 07 | 7) clear ; m-nob ;;
 08 | 8) clear ; m-ipc ;;
-09 | 9) clear ; m-tri ;;
-10) clear ; m-bkp ;;
+09 | 9) clear ; m-bkp ;;
+10) clear ; m-tme ;;
 11) clear ; m-bot ;;
 12) clear ; bash /root/chat ;; # ganti chatid tele
 13) clear ; curl "https://raw.githubusercontent.com/Azigaming404/Autoscript-by-azi/main/udp/udp-custom.sh" | bash ;;

@@ -36,7 +36,7 @@ fi
 if [ $regex = 3 ] || [ $regex = 3 ]
 then
 rm -rf /usr/bin/dashboard
-wget -q -O /usr/bin/dashboard "https://raw.githubusercontent.com/LT-BACKEND/stunnelvpn/momok/Themes/LunaticTunneling.sh" && chmod 777 /usr/bin/dashboard
+wget -q -O /usr/bin/dashboard "https://raw.githubusercontent.com/LT-BACKEND/ltstunnel/main/Themes/Lunatic.sh" && chmod 777 /usr/bin/dashboard
 dashboard
 fi
 
@@ -44,17 +44,16 @@ fi
 if [ $regex = 4 ] || [ $regex = 4 ]
 then
 rm -rf /usr/bin/dashboard
-wget -q -O /usr/bin/dashboard "https://raw.githubusercontent.com/LT-BACKEND/stunnelvpn/momok/Themes/PotatoTunneling.sh" && chmod 777 /usr/bin/dashboard
+wget -q -O /usr/bin/dashboard "https://raw.githubusercontent.com/LT-BACKEND/ltstunnel/main/Themes/Potato.sh" && chmod 777 /usr/bin/dashboard
 dashboard
 fi
 
 # // [ 5 ] Fighter Tunnel
 if [ $regex = 5 ] || [ $regex = 5 ]
 then
-rm -rf /usr/bin/menu
 rm -rf /usr/bin/dashboard
-rm -rf /usr/bin/setting
-wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/LT-BACKEND/stunnelvpn/momok/Themes/Fighter.sh" && chmod 777 /usr/bin/menu
+rm -rf /usr/bin/menu
+wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/LT-BACKEND/ltstunnel/main/Themes/Fighter.sh" && chmod 777 /usr/bin/menu
 menu
 fi
 
@@ -62,7 +61,7 @@ fi
 if [ $regex = 6 ] || [ $regex = 6 ]
 then
 rm -rf /usr/bin/dashboard
-wget -q -O /usr/bin/dashboard "https://raw.githubusercontent.com/LT-BACKEND/stunnelvpn/momok/Themes/SanzTunneling.sh" && chmod 777 /usr/bin/dashboard
+wget -q -O /usr/bin/dashboard "https://raw.githubusercontent.com/LT-BACKEND/ltstunnel/main/Themes/Sanz.sh" && chmod 777 /usr/bin/dashboard
 dashboard
 fi
 
@@ -70,7 +69,7 @@ fi
 if [ $regex = 7 ] || [ $regex = 7 ]
 then
 rm -rf /usr/bin/dashboard
-wget -q -O /usr/bin/dashboard "https://raw.githubusercontent.com/LT-BACKEND/stunnelvpn/momok/Themes/AndyyudaTunnel.sh" && chmod 777 /usr/bin/dashboard
+wget -q -O /usr/bin/dashboard "https://raw.githubusercontent.com/LT-BACKEND/ltstunnel/main/Themes/Andyyuda.sh" && chmod 777 /usr/bin/dashboard
 dashboard
 fi
 

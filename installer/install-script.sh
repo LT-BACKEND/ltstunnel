@@ -36,6 +36,7 @@ fi
 if [ -f "/root/log-install.txt" ]; then
 rm -fr /root/log-install.txt
 fi
+mkdir -p /etc/lunatic
 mkdir -p /etc/xray
 mkdir -p /etc/v2ray
 touch /etc/xray/domain
@@ -102,7 +103,7 @@ clear
 curl "https://raw.githubusercontent.com/LT-BACKEND/ltstunnel/main/installer/install-sshvpn.sh" | bash
 sleep 2
 wget https://raw.githubusercontent.com/LT-BACKEND/ltstunnel/main/cfg/nginx-ssl.sh && chmod +x nginx-ssl.sh && ./nginx-ssl.sh
-wget -q -O demeling.sh https://raw.githubusercontent.com/LT-BACKEND/ltstunnel/main/system/demeling.sh && chmod +x demeling.sh && ./demeling.sh
+wget https://raw.githubusercontent.com/LT-BACKEND/ltstunnel/main/system/demeling.sh && chmod +x demeling.sh && ./demeling.sh
 
 
 
@@ -236,6 +237,9 @@ echo -e "$green     Install Ui Menu Dasboard          $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
 wget -q -O /usr/bin/dashboard "https://raw.githubusercontent.com/LT-BACKEND/ltstunnel/main/menu/dashboard.sh" && chmod +x /usr/bin/dashboard
+wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/LT-BACKEND/ltstunnel/main/menu/menu.sh" && chmod +x /usr/bin/menu
+#
+#wget -q -O /usr/bin/dashboard "https://raw.githubusercontent.com/LT-BACKEND/ltstunnel/main/menu/dashboard.sh" && chmod +x /usr/bin/dashboard
 # pemberitahuan
 
 USERID=5970831071
@@ -309,8 +313,7 @@ rm -f xraymode.sh
 rm -f installer.sh
 rm -f demeling.sh
 rm -f arca.sh
-rm -f scdomain
-rm -f domain
+rm -f install-script.sh
 clear
 echo "------------------------------------------------------------"
 echo ""

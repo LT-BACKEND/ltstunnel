@@ -670,7 +670,8 @@ print_install "Memasang Backup Server"
 #BackupOption
 apt install rclone -y
 printf "q\n" | rclone config
-wget -O /root/.config/rclone/rclone.conf "https://raw.githubusercontent.com/LT-BACKEND/ltstunnel/main/cfg/rclone.conf"
+wget rclone.conf "https://raw.githubusercontent.com/LT-BACKEND/ltstunnel/main/cfg/rclone.conf"
+
 #Install Wondershaper
 cd /bin
 git clone  https://github.com/magnific0/wondershaper.git
